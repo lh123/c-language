@@ -5,9 +5,13 @@ class cube
 	private:
 	int a,b;
 	public:
-	cube(int x=1,int y=1)
+	cube(int x=1,int y=1);
 	void input();
-	void show();
+	void show()
+	{
+		cout << "高=" << a << endl;
+		cout << "宽=" << b << endl;
+	}
 	int mianji();
 };
 cube::cube(int x,int y)
@@ -28,5 +32,5 @@ int main()
 	cube cu;
 	cu.input();
 	cu.show();
-	cu.mainji();
+	cout << "面积=" << cu.mianji();
 }
