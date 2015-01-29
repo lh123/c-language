@@ -14,7 +14,7 @@ class student//申明学生类
 	public:
 	student(int,string,int,string,int,int,int);//构造函数
 	void show();
-}
+};
 student::student(int a,string b,int c,string d,int e,int f,int g)
 {
 	num=a;
