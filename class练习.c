@@ -29,7 +29,7 @@ int cube::mianji()
 }
 int main()
 {
-	cube cu;
+	cube cu;//建立对象
 	cu.input();
 	cu.show();
 	cout << "面积=" << cu.mianji();
