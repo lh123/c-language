@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-class cube
+class cube //
 {
 	private:
 	int a,b;
