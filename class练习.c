@@ -6,13 +6,13 @@ class cube //建立类
 	int a,b;
 	public:
 	cube(int x=1,int y=1);
-	void input();
-	void show()
+	void input();//输入
+	void show()//输出
 	{
 		cout << "高=" << a << endl;
 		cout << "宽=" << b << endl;
 	}
-	int mianji();
+	int mianji();//计算面积
 };
 cube::cube(int x,int y)
 {
