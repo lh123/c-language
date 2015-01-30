@@ -3,7 +3,4 @@
 using namespace std;
 int main()
 {
-	listnode stu1;
-	stu1.input();
-	stu1.show();
 }

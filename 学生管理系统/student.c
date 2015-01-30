@@ -1,4 +1,4 @@
-/*学生类*/
+/*学生链表类*/
 #include <iostream>
 #include <string>
 using namespace std;
@@ -11,56 +11,60 @@ struct student//学生结构体
 	int xd;//线代
 	int ty;//体育
 	int wl;//物理
+	student *next,*pre;
 };
-class listnode//申明链表生类
+class list//定义链表类
 {
 	private:
 	student date;
+	student *head;
 	public:
-	//student(int,string,int,string,int,int,int);//构造函数
-	void show();//显示每个成员的信息
-	int sorce(); //及格返回true 否则返回false
-	void input();//输入函数
-	student *next;//链表指针
-};
-/*student::student(int a,string b,int c,string d,int e,int f,int g)//定义构造函数
-{
-	num=a;
-	name=b;
-	xyr=c;
-	sr=d;
-	xd=e;
-	ty=f;
-	wl=g;
-}*/
-int listnode::sorce()//定义判断是否及格的函数
-{
-	if(date.xd<60||date.ty<60||date.wl<60)
+	list()//构造头节点
 	{
-		return false;//不及格返回
+		head=(student*)new(student);
+		head->next=NULL;
+		head->pre=NULL;
 	}
-	else
-		return true;//及格返回
+	void insert();//插入节点
+	void remove(student *p);//删除某节点
+	void show();//显示整个链表
 }
-void listnode::show() //显示函数
+void remove(student *p)//删除某个节点
 {
-	cout << date.num << "\t" << date.name << "\t" << date.xyr << "\t";
-	cout << date.sr << "\t" << date.xd << "\t" << date.ty << "\t" << date.wl << "\t" << endl;
+	p->pre->next=p->next;
+	p->next->pre=p->pre;
+	delete(p);
 }
-void listnode::input()//输入函数
+void list::show() //显示函数
 {
+	student *current=head;
+	current=current->next;//跳过头节点
+	while(current->next!=NULL)
+	{
+		cout << current->num << "\t" << current->name << "\t" << current->xyr << "\t";
+		cout << current->sr << "\t" << current->xd << "\t" << current->ty << "\t" << current->wl << "\t" << endl;
+	}
+}
+void list::insert()//输入函数
+{
+	student *p;
+	p=(student*)new(student);
 	cout << "请输入序号:";
-	cin >> date.num;
+	cin >> p->num;
 	cout << "请输入姓名:";
-	cin >> date.name;
+	cin >> p->name;
 	cout << "请输入幸运日:";
-	cin >> date.xyr;
+	cin >> p->xyr;
 	cout << "请输入生日:";
-	cin >> date.sr;
+	cin >> p->sr;
 	cout << "请输入线代:";
-	cin >> date.xd;
+	cin >> p->xd;
 	cout << "请输入体育:";
-	cin >> date.ty;
+	cin >> p->ty;
 	cout << "请输入物理:";
-	cin >> date.wl;
+	cin >> p->wl;
+	head->next=p;
+	p->next=NULL;
+	p->pre=head;
+	
 }
