@@ -15,6 +15,7 @@ class student//申明学生类
 	student(int,string,int,string,int,int,int);//构造函数
 	void show();//显示每个成员的信息
 	int sorce(); //及格返回true 否则返回false
+	void input();//输入函数
 };
 student::student(int a,string b,int c,string d,int e,int f,int g)//定义构造函数
 {
@@ -39,4 +40,21 @@ void student::show() //显示函数
 {
 	cout << num << "\t" << name << "\t" << xyr << "\t";
 	cout << sr << "\t" << xd << "\t" << ty << "\t" << wl << "\t" << endl;
+}
+void student::input()//输入函数
+{
+	cout << "请输入序号:";
+	cin >> num;
+	cout << "请输入姓名:";
+	cin >> name;
+	cout << "请输入幸运日:";
+	cin >> xyr;
+	cout << "请输入生日";
+	cin >> sr;
+	cout << "请输入线代:";
+	cin >> xd;
+	cout << "请输入体育:";
+	cin >> ty;
+	cout << "请输入物理:";
+	cin >> wl;
 }
