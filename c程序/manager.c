@@ -35,3 +35,8 @@ int student::sorce();//定义判断是否及格的函数
 	else
 		return true;
 }
+void student::show() //显示函数
+{
+	cout << num << "\t" << name << "\t" << xyr << "\t";
+	cout << sr << "\t" << xd << "\t" << ty << "\t" << wl << "\t" << endl;
+}
