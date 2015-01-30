@@ -1,6 +1,11 @@
-#include "student.c" //包含学生类
-#include "iostream"
+#include <iostream>
+#include "student.h"
 using namespace std;
 int main()
 {
+	list stu;
+	stu.insert();
+	stu.show();
+	stu.insert();
+	stu.show();
 }
