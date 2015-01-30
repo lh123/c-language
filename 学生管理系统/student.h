@@ -35,5 +35,5 @@ class list//定义链表类
 	friend void singleshow(student *);//显示单个信息
 	student* search();//搜索
 	void modify(student *);//修改信息
-	void distory();//销毁整个链表
+	void destory();//销毁整个链表
 };

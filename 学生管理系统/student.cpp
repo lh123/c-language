@@ -3,7 +3,7 @@ student.cpp*/
 #include <iostream>
 #include "student.h"
 using namespace std;
-void destory()//销毁链表，释放内存
+void list::destory()//销毁链表，释放内存
 {
 	student *p;
 	while(head)
