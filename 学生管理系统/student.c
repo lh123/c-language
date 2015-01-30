@@ -32,10 +32,10 @@ int student::sorce();//定义判断是否及格的函数
 {
 	if(xd<60||ty<60||wl<60)
 	{
-		return false;
+		return false;//不及格返回
 	}
 	else
-		return true;
+		return true;//及格返回
 }
 void student::show() //显示函数
 {
