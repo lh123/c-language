@@ -33,7 +33,7 @@ class listnode//申明链表生类
 	ty=f;
 	wl=g;
 }*/
-int student::sorce()//定义判断是否及格的函数
+int listnode::sorce()//定义判断是否及格的函数
 {
 	if(date.xd<60||date.ty<60||date.wl<60)
 	{
@@ -42,12 +42,12 @@ int student::sorce()//定义判断是否及格的函数
 	else
 		return true;//及格返回
 }
-void student::show() //显示函数
+void listnode::show() //显示函数
 {
 	cout << date.num << "\t" << date.name << "\t" << date.xyr << "\t";
 	cout << date.sr << "\t" << date.xd << "\t" << date.ty << "\t" << date.wl << "\t" << endl;
 }
-void student::input()//输入函数
+void listnode::input()//输入函数
 {
 	cout << "请输入序号:";
 	cin >> date.num;
