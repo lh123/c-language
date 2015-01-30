@@ -49,7 +49,7 @@ void student::input()//输入函数
 	cin >> name;
 	cout << "请输入幸运日:";
 	cin >> xyr;
-	cout << "请输入生日";
+	cout << "请输入生日:";
 	cin >> sr;
 	cout << "请输入线代:";
 	cin >> xd;
