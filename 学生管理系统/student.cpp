@@ -1,9 +1,19 @@
 /*学生链表类
-student.c*/
+student.cpp*/
 #include <iostream>
 #include "student.h"
 using namespace std;
-void list::singleshow(student *current)
+void destory()//销毁链表，释放内存
+{
+	student *p;
+	while(head)
+	{
+		p=head->next;
+		delete head;
+		head=p;
+	}
+}
+void singleshow(student *current)
 {
 	cout << current->info.num << "\t" << current->info.name << "\t" << current->info.xyr << "\t";
 	cout << current->info.sr << "\t" << current->info.xd << "\t" << current->info.ty << "\t" << current->info.wl << "\t" << endl;
@@ -74,14 +84,8 @@ void list::show() //显示函数
 		current=current->next;
 	}
 }
-void list::insert()//输入函数
+void singleinput(student *p)//输入单个人的信息
 {
-	student *p,*q=head;
-	while(q->next!=NULL)//找到尾部插入
-	{
-		q=q->next;
-	}
-	p=(student*)new(student);
 	cout << "请输入序号:";
 	cin >> p->info.num;
 	cout << "请输入姓名:";
@@ -96,7 +100,21 @@ void list::insert()//输入函数
 	cin >> p->info.ty;
 	cout << "请输入物理:";
 	cin >> p->info.wl;
+}
+void list::insert()//输入函数
+{
+	student *p,*q=head;
+	while(q->next!=NULL)//找到尾部插入
+	{
+		q=q->next;
+	}
+	p=(student*)new(student);
+	singleinput(p);
 	q->next=p;
 	p->next=NULL;
 	p->pre=q;
+}
+void modify(student *p)//修改信息
+{
+	singleinput(p);
 }

@@ -31,6 +31,9 @@ class list//定义链表类
 	void insert();//插入节点
 	void remove(student *);//删除某节点
 	void show();//显示整个链表
-	void singleshow(student *);//显示单个信息
+	friend void singleinput(student *);//输入单个信息
+	friend void singleshow(student *);//显示单个信息
 	student* search();//搜索
+	void modify(student *);//修改信息
+	void distory();//销毁整个链表
 };
