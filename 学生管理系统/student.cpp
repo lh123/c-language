@@ -3,6 +3,9 @@ student.cpp*/
 #include <iostream>
 #include <string>
 #include "student.h"
+#define wuli current->info.wl
+#define xiandai current->info.xd
+#define tiyu current->info.ty
 using namespace std;
 void list::destory()//销毁链表，释放内存
 {
@@ -14,7 +17,7 @@ void list::destory()//销毁链表，释放内存
 		head=p;
 	}
 }
-void singleshow(student *current)
+void list::singleshow(student *current)
 {
 	cout << current->info.num << "\t" << current->info.name << "\t" << current->info.xyr << "\t";
 	cout << current->info.sr << "\t" << current->info.xd << "\t" << current->info.ty << "\t" << current->info.wl << "\t" << endl;
@@ -85,22 +88,25 @@ void list::show() //显示函数
 		current=current->next;
 	}
 }
-void singleinput(student *p)//输入单个人的信息
+void list::singleinput(student *p)//输入单个人的信息
 {
-	cout << "请输入序号:";
-	cin >> p->info.num;
-	cout << "请输入姓名:";
-	cin >> p->info.name;
-	cout << "请输入幸运日:";
-	cin >> p->info.xyr;
-	cout << "请输入生日:";
-	cin >> p->info.sr;
-	cout << "请输入线代:";
-	cin >> p->info.xd;
-	cout << "请输入体育:";
-	cin >> p->info.ty;
-	cout << "请输入物理:";
-	cin >> p->info.wl;
+	if(p!=NULL)
+	{
+		cout << "请输入序号:";
+		cin >> p->info.num;
+		cout << "请输入姓名:";
+		cin >> p->info.name;
+		cout << "请输入幸运日:";
+		cin >> p->info.xyr;
+		cout << "请输入生日:";
+		cin >> p->info.sr;
+		cout << "请输入线代:";
+		cin >> p->info.xd;
+		cout << "请输入体育:";
+		cin >> p->info.ty;
+		cout << "请输入物理:";
+		cin >> p->info.wl;
+	}
 }
 void list::insert()//输入函数
 {
@@ -115,7 +121,56 @@ void list::insert()//输入函数
 	p->next=NULL;
 	p->pre=q;
 }
-void modify(student *p)//修改信息
+void list::modify(student *p)//修改信息
 {
 	singleinput(p);
+}
+void list::scorefalse()//显示出不及格的人
+{
+	student *current=head;
+	current=current->next;
+	while(current!=NULL)
+	{
+		if(xiandai<60||wuli<60||tiyu<60)
+		{
+			cout << "姓名:" << current->info.name << endl;
+			if(xiandai<60)
+			{
+				//cout << current->info.name << endl;
+				cout << "科目: 线代" << "\t";
+				cout << "分数: " << xiandai << endl;
+			}
+			if(wuli<60)
+			{
+				//cout << current->info.name << endl;
+				cout << "科目: 物理" << "\t";
+				cout << "分数: " << wuli << endl;
+			}
+			if(xiandai<60)
+			{
+				//cout << current->info.name << endl;
+				cout << "科目: 体育" << "\t";
+				cout << "分数: " << tiyu << endl;
+			}
+		}
+		current=current->next;
+	}
+}
+void list::percent()//显示总体百分比
+{
+	student *current=head;
+	int i=0,bjg=0,exc=0,lh=0;
+	current=current->next;
+	while(current!=NULL)
+	{
+		i++;
+		float aver=(wuli+xiandai+tiyu)/3.0;
+		if(aver<60) bjg++;
+		else if(aver<80) lh++;
+		else exc++;
+		current=current->next;
+	}
+	cout << "所有学生中\n平均分<60有\t\t" << bjg << "名\t" << "占:" << float(bjg)/i*100 << "%" << endl;
+	cout << "60<平均分<80有\t\t" << lh << "名\t" << "占:" << float(lh)/i*100 << "%" << endl;
+	cout << "平均分>80有\t\t" << exc << "名\t" << "占:" << float(exc)/i*100 << "%" << endl;
 }
