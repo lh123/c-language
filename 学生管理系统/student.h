@@ -9,9 +9,9 @@ struct date1//学生结构体
 	string name;//姓名
 	int xyr;//幸运日
 	string sr;//生日
-	int xd;//线代
-	int ty;//体育
-	int wl;//物理
+	float xd;//线代
+	float ty;//体育
+	float wl;//物理
 };
 #endif
 #ifndef STUDENT_
@@ -39,10 +39,13 @@ class list//定义链表类
 	void insert();//插入节点
 	void remove(student *);//删除某节点
 	void show();//显示整个链表
-	friend void singleinput(student *);//输入单个信息
-	friend void singleshow(student *);//显示单个信息
+	void singleinput(student *);//输入单个信息
+	void singleshow(student *);//显示单个信息
 	student* search();//搜索
 	void modify(student *);//修改信息
 	void destory();//销毁整个链表
+	void scorefalse();//输出不及格名单
+	void percent();//输出总体百分比
+	void singlepercent();//输出单科百分比
 };
 #endif
