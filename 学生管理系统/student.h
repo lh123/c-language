@@ -1,6 +1,8 @@
 /*student.h*/
-#include <string>
+include <string>
 using namespace std;
+#ifndef DATE1_
+#define DATE1_
 struct date1//学生结构体
 {
 	int num;//序号
@@ -11,14 +13,20 @@ struct date1//学生结构体
 	int ty;//体育
 	int wl;//物理
 };
+#endif
+#ifndef STUDENT_
+#define STUDENT_
 struct student//学生链表
 {
 	date1 info;
 	student *next,*pre;
 };
+#endif
+#ifndef LIST_
+#define LIST_
 class list//定义链表类
 {
-	private:
+	protected:
 	student date;
 	student *head;
 	public:
@@ -37,3 +45,4 @@ class list//定义链表类
 	void modify(student *);//修改信息
 	void destory();//销毁整个链表
 };
+#endif

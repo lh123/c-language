@@ -1,6 +1,7 @@
 /*学生链表类
 student.cpp*/
 #include <iostream>
+#include <string>
 #include "student.h"
 using namespace std;
 void list::destory()//销毁链表，释放内存
