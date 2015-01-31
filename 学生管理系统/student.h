@@ -1,5 +1,5 @@
 /*student.h*/
-include <string>
+#include <string>
 using namespace std;
 #ifndef DATE1_
 #define DATE1_
