@@ -10,5 +10,5 @@ int main()
 	stu.insert();
 	stu.show();
 	stu.percent();
-	stu.destory();
+	stu.singlepercent();
 }

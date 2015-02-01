@@ -174,3 +174,35 @@ void list::percent()//显示总体百分比
 	cout << "60<平均分<80有\t\t" << lh << "名\t" << "占:" << float(lh)/i*100 << "%" << endl;
 	cout << "平均分>80有\t\t" << exc << "名\t" << "占:" << float(exc)/i*100 << "%" << endl;
 }
+void list::singlepercent()//显示单科百分百
+{
+	student *current=head;
+	int i=0;
+	int phy_bjg=0,phy_lh=0,phy_exc=0;
+	int line_bjg=0,line_lh=0,line_exc=0;
+	int exer_bjg=0,exer_lh=0,exer_exc=0;
+	current=current->next;
+	while(current!=NULL)
+	{
+		if(wuli<60) phy_bjg++;
+		else if(wuli<80) phy_lh++;
+		else phy_exc++;
+		if(xiandai<60) line_bjg++;
+		else if(xiandai<80) line_lh++;
+		else line_exc++;
+		if(tiyu<60) exer_bjg++;
+		else if(tiyu<80) exer_lh++;
+		else exer_exc++;
+		i++;
+		current=current->next;
+	}
+	cout << "物理:\n" << "不及格有(<60)\t\t" << phy_bjg << "名\t" << "占" << float(phy_bjg)/i*100 << "%" << endl;
+	cout << "良好有(<80)\t\t" << phy_lh << "名\t" << "占" << float(phy_lh)/i*100 << "%" << endl;
+	cout << "优秀有(>80)\t\t" << phy_exc << "名\t" << "占" << float(phy_exc)/i*100 << "%" << endl;
+	cout << "线代:\n" << "不及格有(<60)\t\t" << line_bjg << "名\t" << "占" << float(line_bjg)/i*100 << "%" << endl;
+	cout << "良好有(<80)\t\t" << line_lh << "名\t" << "占" << float(line_lh)/i*100 << "%" << endl;
+	cout << "优秀有(>80)\t\t" << line_exc << "名\t" << "占" << float(line_exc)/i*100 << "%" << endl;
+	cout << "体育:\n" << "不及格有(<60)\t\t" << exer_bjg << "名\t" << "占" << float(exer_bjg)/i*100 << "%" << endl;
+	cout << "良好有(<80)\t\t" << exer_lh << "名\t" << "占" << float(exer_lh)/i*100 << "%" << endl;
+	cout << "优秀有(>80)\t\t" << exer_exc << "名\t" << "占" << float(exer_exc)/i*100 << "%" << endl;
+}
