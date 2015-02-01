@@ -209,8 +209,9 @@ void list::singlepercent()//显示单科百分百
 	cout << "良好有(<80)\t\t" << exer_lh << "名\t" << "占" << float(exer_lh)/i*100 << "%" << endl;
 	cout << "优秀有(>80)\t\t" << exer_exc << "名\t" << "占" << float(exer_exc)/i*100 << "%" << endl;
 }
-void list::savefile()//保存函数
+void list::txtsavefile()//导出到文件
 {
+	int i=0;
 	ofstream stu;
 	student *current=head;
 	current=current->next;
@@ -224,7 +225,36 @@ void list::savefile()//保存函数
 	{
 		stu << current->info.num << "\t" << current->info.name << "\t" << current->info.xyr << "\t";
 		stu << current->info.sr << "\t" << current->info.xd << "\t" << current->info.ty << "\t" << current->info.wl << "\t" << endl;
+		i++;
 		current=current->next;
 	}
+	cout << "成功导出" << i << "条数据" << endl;
 	stu.close();
+}
+void list::savefile()//保存到二进制文件
+{
+	int i=0;
+	ofstream stu;
+	student *current=head;
+	current=current->next;
+	stu.open("学生数据.bin",ios::binary|ios::out);
+	if(!stu.is_open())
+	{
+		cout << "文件打开失败" << endl;
+		exit(EXIT_FAILURE);
+	}
+	while(current!=NULL)
+	{
+		stu.write((char *) &(current->info),sizeof (current->info));
+		i++;
+		current=current->next;
+	}
+	cout << "成功保存" << i << "条数据" << endl;
+}
+void list::openfile()
+{
+	ifstream stu;
+	student *current=head;
+	current=current->next;
+	stu.open("学生数据.txt",ios::in);
 }
