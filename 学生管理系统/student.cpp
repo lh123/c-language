@@ -262,7 +262,10 @@ void list::openfile()//打开二进制文件
 		cout << "文件打开失败" << endl;
 		exit(EXIT_FAILURE);
 	}
-	while(stu_.peek()!=EOF)
+	stu_.seekg(0,ios::end);
+	int end_=stu_.tellg();
+	stu_.seekg(0,ios::beg);
+	while(stu_.tellg()!=end_)
 	{
 		while(p->next!=NULL)
 		{

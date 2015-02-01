@@ -5,6 +5,6 @@ int main()
 {
 	cout << "欢迎进入学生管理系统\n";
 	list stu;
-	stu.openfile();
-	stu.show();
+	stu.insert();
+	
 }
