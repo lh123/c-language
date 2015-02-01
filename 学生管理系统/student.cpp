@@ -2,6 +2,8 @@
 student.cpp*/
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <cstdlib>
 #include "student.h"
 #define wuli current->info.wl
 #define xiandai current->info.xd
@@ -206,4 +208,23 @@ void list::singlepercent()//显示单科百分百
 	cout << "体育:\n" << "不及格有(<60)\t\t" << exer_bjg << "名\t" << "占" << float(exer_bjg)/i*100 << "%" << endl;
 	cout << "良好有(<80)\t\t" << exer_lh << "名\t" << "占" << float(exer_lh)/i*100 << "%" << endl;
 	cout << "优秀有(>80)\t\t" << exer_exc << "名\t" << "占" << float(exer_exc)/i*100 << "%" << endl;
+}
+void list::savefile()//保存函数
+{
+	ofstream stu;
+	student *current=head;
+	current=current->next;
+	stu.open("学生数据.txt");
+	if(!stu.is_open())
+	{
+		cout << "文件打开失败" << endl;
+		exit(EXIT_FAILURE);
+	}
+	while(current!=NULL)
+	{
+		stu << current->info.num << "\t" << current->info.name << "\t" << current->info.xyr << "\t";
+		stu << current->info.sr << "\t" << current->info.xd << "\t" << current->info.ty << "\t" << current->info.wl << "\t" << endl;
+		current=current->next;
+	}
+	stu.close();
 }

@@ -11,4 +11,5 @@ int main()
 	stu.show();
 	stu.percent();
 	stu.singlepercent();
+	stu.savefile();
 }
