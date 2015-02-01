@@ -47,5 +47,8 @@ class list//定义链表类
 	void scorefalse();//输出不及格名单
 	void percent();//输出总体百分比
 	void singlepercent();//输出单科百分比
+	void birthday();//输出相同生日的人
+	void savefile();//保存到文件
+	void openfile();//从文件读取
 };
 #endif
