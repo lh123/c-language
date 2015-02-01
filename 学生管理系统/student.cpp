@@ -9,6 +9,12 @@ student.cpp*/
 #define xiandai current->info.xd
 #define tiyu current->info.ty
 using namespace std;
+int flag=0;
+void list::showt()//显示表头
+{
+	cout << "序号" << "\t" << "姓名" << "\t" << "幸运日" << "\t";
+	cout << "生日" << "\t" << "线代" << "\t" << "体育" << "\t" << "物理" << "\t" << endl;
+}
 void list::destory()//销毁链表，释放内存
 {
 	student *p;
@@ -31,6 +37,7 @@ student* list::search()
 	cin >> i;
 	student *current=head;
 	current=current->next;
+	showt();
 	while(current!=NULL)
 	{
 		if(current->info.num==i)
@@ -81,14 +88,18 @@ void list::remove(student *p)//删除某个节点
 }
 void list::show() //显示函数
 {
+	int i=0;
 	student *current=head;
 	current=current->next;//跳过头节点
+	showt();
 	while(current!=NULL)
 	{
 		cout << current->info.num << "\t" << current->info.name << "\t" << current->info.xyr << "\t";
 		cout << current->info.sr << "\t" << current->info.xd << "\t" << current->info.ty << "\t" << current->info.wl << "\t" << endl;
 		current=current->next;
+		i++;
 	}
+	if(i=0) cout << "没有学生" << endl;
 }
 void list::singleinput(student *p)//输入单个人的信息
 {
@@ -215,6 +226,16 @@ void list::txtsavefile()//导出到文件
 	ofstream stu;
 	student *current=head;
 	current=current->next;
+	if(flag==0)
+	{
+		cout << "系统检测到危险操作\n输入y跳过打开文件\n";
+		char w;
+		cin >> w;
+		if(m!='y')
+		{
+			openfile();
+		}
+	}
 	stu.open("学生数据.txt");
 	if(!stu.is_open())
 	{
@@ -237,6 +258,16 @@ void list::savefile()//保存到二进制文件
 	ofstream stu_;
 	student *current=head;
 	current=current->next;
+	if(flag==0)
+	{
+		cout << "系统检测到危险操作\n输入y跳过打开文件\n";
+		char w;
+		cin >> w;
+		if(m!='y')
+		{
+			openfile();
+		}
+	}
 	stu_.open("学生数据.bin",ios::binary|ios::out);
 	if(!stu_.is_open())
 	{
@@ -249,6 +280,7 @@ void list::savefile()//保存到二进制文件
 		i++;
 		current=current->next;
 	}
+	stu_.close();
 	cout << "成功保存" << i << "条数据" << endl;
 }
 void list::openfile()//打开二进制文件
@@ -274,6 +306,7 @@ void list::openfile()//打开二进制文件
 		q=(student *)new student;
 		stu_.read((char *) &(q->info),sizeof (q->info));
 		i++;
+		flag=1;
 		p->next=q;
 		q->next=NULL;
 		q->pre=p;

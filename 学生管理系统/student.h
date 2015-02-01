@@ -50,5 +50,6 @@ class list//定义链表类
 	void txtsavefile();//导出到文件
 	void openfile();//从文件读取
 	void savefile();//保存到文件
+	void showt();//显示表头
 };
 #endif
