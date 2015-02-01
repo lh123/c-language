@@ -106,6 +106,7 @@ void list::singleinput(student *p)//输入单个人的信息
 		cin >> p->info.ty;
 		cout << "请输入物理:";
 		cin >> p->info.wl;
+		cout << "输入成功" << endl;
 	}
 }
 void list::insert()//输入函数
