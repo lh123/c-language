@@ -13,7 +13,7 @@ int flag=0;
 void list::showt()//显示表头
 {
 	cout << "序号" << "\t" << "姓名" << "\t" << "幸运日" << "\t";
-	cout << "生日" << "\t" << "线代" << "\t" << "体育" << "\t" << "物理" << "\t" << endl;
+	cout << "生日" << "\t\t" << "线代" << "\t" << "体育" << "\t" << "物理" << "\t" << endl;
 }
 void list::destory()//销毁链表，释放内存
 {
@@ -67,6 +67,25 @@ student* list::search()
 		return NULL;
 	}
 }
+void list::search_()//搜索显示信息
+{
+	int i=0;
+	student *p=head;
+	p=p->next;
+	int num_;
+	cout << "请输入序号" << endl;
+	cin >> num_;
+	while(p!=NULL)
+	{
+		if(p->info.num==num_)
+		{
+			singleshow(p);
+			i++;
+		}
+		p=p->next;
+	}
+	if(i==0) cout << "没有找到该序号\n";
+}
 void list::remove(student *p)//删除某个节点
 {
 	if(p!=NULL)
@@ -99,7 +118,7 @@ void list::show() //显示函数
 		current=current->next;
 		i++;
 	}
-	if(i=0) cout << "没有学生" << endl;
+	if(i==0) cout << "没有学生" << endl;
 }
 void list::singleinput(student *p)//输入单个人的信息
 {
@@ -160,7 +179,7 @@ void list::scorefalse()//显示出不及格的人
 				cout << "科目: 物理" << "\t";
 				cout << "分数: " << wuli << endl;
 			}
-			if(xiandai<60)
+			if(tiyu<60)
 			{
 				//cout << current->info.name << endl;
 				cout << "科目: 体育" << "\t";
@@ -231,7 +250,7 @@ void list::txtsavefile()//导出到文件
 		cout << "系统检测到危险操作\n输入y跳过打开文件\n";
 		char w;
 		cin >> w;
-		if(m!='y')
+		if(w!='y')
 		{
 			openfile();
 		}
@@ -263,7 +282,7 @@ void list::savefile()//保存到二进制文件
 		cout << "系统检测到危险操作\n输入y跳过打开文件\n";
 		char w;
 		cin >> w;
-		if(m!='y')
+		if(w!='y')
 		{
 			openfile();
 		}

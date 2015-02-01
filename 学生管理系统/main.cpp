@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "student.h"
 using namespace std;
 int main()
@@ -13,8 +14,8 @@ int main()
 	cout << "(7)\t显示不及格\n";
 	cout << "(8)\t统计单科信息\n";
 	cout << "(9)\t统计所有信息\n";
-	cout << "(10)\t删除单个信息\n";
-	cout << "(11)\t导出到txt文件\n";
+	cout << "(a)\t删除单个信息\n";
+	cout << "(b)\t导出到txt文件\n";
 	cout << "(0)\t退出\n";
 	list stu;
 	char choice;
@@ -28,13 +29,14 @@ int main()
 			case '2': stu.savefile(); break;
 			case '3': stu.insert(); break;
 			case '4': stu.show(); break;
-			case '5': stu.search(); break;
+			case '5': stu.search_(); break;
 			case '6': stu.modify(stu.search()); break;
+			case '7': stu.scorefalse(); break;
 			case '8': stu.singlepercent(); break;
 			case '9': stu.percent(); break;
-			case '10': stu.remove(stu.search()); break;
-			case '11': stu.txtsavefile(); break;
-			case '0': stu.destory(); break;
+			case 'a': stu.remove(stu.search()); break;
+			case 'b': stu.txtsavefile(); break;
+			case '0': stu.destory(); exit(1); break;
 			default: cout << "输入有误\n"; break;
 		}
 	}
