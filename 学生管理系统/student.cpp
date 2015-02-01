@@ -234,27 +234,46 @@ void list::txtsavefile()//导出到文件
 void list::savefile()//保存到二进制文件
 {
 	int i=0;
-	ofstream stu;
+	ofstream stu_;
 	student *current=head;
 	current=current->next;
-	stu.open("学生数据.bin",ios::binary|ios::out);
-	if(!stu.is_open())
+	stu_.open("学生数据.bin",ios::binary|ios::out);
+	if(!stu_.is_open())
 	{
 		cout << "文件打开失败" << endl;
 		exit(EXIT_FAILURE);
 	}
 	while(current!=NULL)
 	{
-		stu.write((char *) &(current->info),sizeof (current->info));
+		stu_.write((char *) &(current->info),sizeof (current->info));
 		i++;
 		current=current->next;
 	}
 	cout << "成功保存" << i << "条数据" << endl;
 }
-void list::openfile()
+void list::openfile()//打开二进制文件
 {
-	ifstream stu;
-	student *current=head;
-	current=current->next;
-	stu.open("学生数据.txt",ios::in);
+	int i=0;
+	student *p=head,*q;
+	ifstream stu_;
+	stu_.open("学生数据.bin",ios::binary|ios::in);
+	if(!stu_.is_open())
+	{
+		cout << "文件打开失败" << endl;
+		exit(EXIT_FAILURE);
+	}
+	while(stu_.peek()!=EOF)
+	{
+		while(p->next!=NULL)
+		{
+			p=p->next;
+		}
+		q=(student *)new student;
+		stu_.read((char *) &(q->info),sizeof (q->info));
+		i++;
+		p->next=q;
+		q->next=NULL;
+		q->pre=p;
+	}
+	cout << "成功读取" << i << "条数据" << endl;
 }
